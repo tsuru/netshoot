@@ -61,6 +61,7 @@ RUN set -ex \
     oh-my-zsh \
     strace \
     tcpdump \
+    tcpflow \
     tcptraceroute \
     tshark \
     util-linux \
