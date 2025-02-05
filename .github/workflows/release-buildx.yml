@@ -34,7 +34,7 @@ jobs:
         id: smarttag
         with:
           docker_image: tsuru/netshoot
-          default_branch: main
+          default_branch: master
           tag_with_sha: "true"
 
       - uses: docker/build-push-action@v4
