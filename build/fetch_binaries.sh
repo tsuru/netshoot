@@ -18,17 +18,6 @@ case $ARCH in
         ;;
 esac
 
-get_ctop() {
-  VERSION=$(get_latest_release bcicen/ctop | sed -e 's/^v//')
-  LINK="https://github.com/bcicen/ctop/releases/download/v${VERSION}/ctop-${VERSION}-linux-${ARCH}"
-  wget "$LINK" -O /tmp/ctop && chmod +x /tmp/ctop
-}
-
-get_calicoctl() {
-  VERSION=$(get_latest_release projectcalico/calicoctl)
-  LINK="https://github.com/projectcalico/calicoctl/releases/download/${VERSION}/calicoctl-linux-${ARCH}"
-  wget "$LINK" -O /tmp/calicoctl && chmod +x /tmp/calicoctl
-}
 
 get_termshark() {
   case "$ARCH" in
@@ -78,8 +67,6 @@ get_fortio() {
 }
 
 
-get_ctop
-get_calicoctl
 get_termshark
 get_grpcurl
 get_fortio

@@ -19,7 +19,6 @@ RUN set -ex \
     apache2-utils \
     bash \
     bind-tools \
-    bird \
     bridge-utils \
     busybox-extras \
     conntrack-tools \
@@ -58,7 +57,6 @@ RUN set -ex \
     socat \
     speedtest-cli \
     openssh \
-    oh-my-zsh \
     strace \
     tcpdump \
     tcpflow \
@@ -67,17 +65,10 @@ RUN set -ex \
     util-linux \
     vim \
     git \
-    zsh \
     websocat \
     swaks \
     perl-crypt-ssleay \
     perl-net-ssleay
-
-# Installing ctop - top-like container monitor
-COPY --from=fetcher /tmp/ctop /usr/local/bin/ctop
-
-# Installing calicoctl
-COPY --from=fetcher /tmp/calicoctl /usr/local/bin/calicoctl
 
 # Installing termshark
 COPY --from=fetcher /tmp/termshark /usr/local/bin/termshark
@@ -93,16 +84,9 @@ USER root
 WORKDIR /root
 ENV HOSTNAME netshoot
 
-# ZSH Themes
-RUN curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-COPY zshrc .zshrc
-COPY motd motd
-
 # Fix permissions for OpenShift and tshark
 RUN chmod -R g=u /root
 RUN chown root:root /usr/bin/dumpcap
 
-# Running ZSH
-CMD ["zsh"]
+# Running BASH
+CMD ["/bin/bash"]
