@@ -16,16 +16,12 @@ RUN set -ex \
     && apk update \
     && apk upgrade \
     && apk add --no-cache \
-    apache2-utils \
     bash \
     bind-tools \
-    bridge-utils \
     busybox-extras \
     conntrack-tools \
     curl \
     dhcping \
-    drill \
-    ethtool \
     file\
     fping \
     iftop \
@@ -33,10 +29,8 @@ RUN set -ex \
     iperf3 \
     iproute2 \
     ipset \
-    iptables \
     iptraf-ng \
     iputils \
-    ipvsadm \
     httpie \
     jq \
     libc6-compat \
@@ -55,7 +49,6 @@ RUN set -ex \
     py3-setuptools \
     scapy \
     socat \
-    speedtest-cli \
     openssh \
     strace \
     tcpdump \
