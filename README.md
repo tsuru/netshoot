@@ -102,18 +102,9 @@ services:
 NAME                              READY   STATUS    RESTARTS   AGE
 nginx-netshoot-7f9c6957f8-kr8q6   2/2     Running   0          4m27s
 
-    $ kubectl exec -it nginx-netshoot-7f9c6957f8-kr8q6 -c netshoot -- /bin/zsh
-                        dP            dP                           dP
-                        88            88                           88
-    88d888b. .d8888b. d8888P .d8888b. 88d888b. .d8888b. .d8888b. d8888P
-    88'  `88 88ooood8   88   Y8ooooo. 88'  `88 88'  `88 88'  `88   88
-    88    88 88.  ...   88         88 88    88 88.  .88 88.  .88   88
-    dP    dP `88888P'   dP   `88888P' dP    dP `88888P' `88888P'   dP
+    $ kubectl exec -it nginx-netshoot-7f9c6957f8-kr8q6 -c netshoot -- /bin/bash
 
-    Welcome to Netshoot! (github.com/nicolaka/netshoot)
-
-
-    nginx-netshoot-7f9c6957f8-kr8q6 $ 
+    nginx-netshoot-7f9c6957f8-kr8q6:~#
  ```
 
 ## The netshoot kubectl plugin
@@ -155,7 +146,6 @@ To troubleshoot these issues, `netshoot` includes a set of powerful tools as rec
     apache2-utils \
     bash \
     bind-tools \
-    bird \
     bridge-utils \
     busybox-extras \
     conntrack-tools \
@@ -201,7 +191,6 @@ To troubleshoot these issues, `netshoot` includes a set of powerful tools as rec
     util-linux \
     vim \
     git \
-    zsh \
     websocat \
     swaks \
     perl-crypt-ssleay \
@@ -661,17 +650,6 @@ br0		8000.0215b8e7deb3	no		vxlan1
 							veth4
 ```
 
-## CTOP
-
-ctop is a free open source, simple and cross-platform top-like command-line tool for monitoring container metrics in real-time. It allows you to get an overview of metrics concerning CPU, memory, network, I/O for multiple containers and also supports inspection of a specific container.
-
-To get data into ctop, you'll need to bind docker.sock into the netshoot container.
-
-`/ # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nicolaka/netshoot ctop`
-
-![ctop.png](img/ctop.png)
-
-It will display running and existed containers with useful metrics to help troubleshoot resource issues; hit "q" to exit.
 
 ## Termshark
 
